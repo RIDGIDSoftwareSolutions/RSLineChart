@@ -16,15 +16,15 @@ class ViewController : UIViewController {
     }
     
     private func getChart() -> FSLineChart {
-        let chart = FSLineChart(frame: CGRect(x: 20, y: 260, width: UIScreen.mainScreen().bounds.size.width - 40, height: 200))
-        chart.verticalGridStep = 4
-        chart.horizontalGridStep = 9
+        let chart = FSLineChart(frame: CGRect(x: 45, y: 260, width: UIScreen.mainScreen().bounds.size.width - 65, height: 200))
+        chart.verticalGridStep = 3
+        chart.horizontalGridStep = 2
         chart.fillColor = nil
         
-        //chart.labelForIndex = { number in return "\(number) $" }
-        //chart.labelForValue = { number in return "\(number) %" }
+        chart.labelForIndex = { number in return "\(number)$" }
+        chart.labelForValue = { number in return "\(number)%" }
         
-        var line1Data: [(Double, Double)] = []
+        var line1Data: [(CGFloat, CGFloat)] = []
         line1Data.append(1, 2.5)
         line1Data.append(2, 4.6)
         line1Data.append(3, 1.8)
@@ -33,7 +33,7 @@ class ViewController : UIViewController {
         
         var chartData = [CGFloat]()
         
-        for i in 0...101 {
+        for i in 0...100 {
             let index = CGFloat(i)
             let randomValue = CGFloat((rand() % 100)) / 200.0
             chartData.append(index / 30 + randomValue)

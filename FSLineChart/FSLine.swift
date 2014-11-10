@@ -12,9 +12,9 @@ import UIKit
 @objc class FSLine : NSObject {
     var lineColor: UIColor!
     var fillColor: UIColor?
-    var dataPoints: [(Double, Double)]!
+    var dataPoints: [(CGFloat, CGFloat)]!
         
-    init(lineColor: UIColor!, fillColor: UIColor?, dataPoints: [(Double, Double)]) {
+    init(lineColor: UIColor!, fillColor: UIColor?, dataPoints: [(CGFloat, CGFloat)]) {
         self.lineColor = lineColor
         self.dataPoints = dataPoints
         self.fillColor = fillColor

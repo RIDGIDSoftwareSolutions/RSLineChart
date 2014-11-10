@@ -42,6 +42,9 @@ class FSLineChart: UIView {
     var valueLabelFont: UIFont!
     var valueLabelPosition: ValueLabelPositionType!
     
+    var labelForValue: ((CGFloat) -> String?)?
+    var labelForIndex: ((Int) -> String?)?
+    
     var minimum: CGFloat!
     var maximum: CGFloat!
     var initialPath: CGMutablePathRef?
@@ -109,74 +112,82 @@ class FSLineChart: UIView {
         
         strokeChart()
         
-//        if(nil != labelForValue) {
-//            for(int i=0;i<_verticalGridStep;i++) {
-//                CGPoint p = CGPointMake(_margin + (_valueLabelPosition == ValueLabelRight ? _axisWidth : 0), _axisHeight + _margin - (i + 1) * _axisHeight / _verticalGridStep);
-//                
-//                NSString* text = _labelForValue(minBound + (maxBound - minBound) / _verticalGridStep * (i + 1));
-//                
-//                if(!text)
-//                continue;
-//                
-//                CGRect rect = CGRectMake(_margin, p.y + 2, self.frame.size.width - _margin * 2 - 4.0f, 14);
-//                
-//                float width =
-//                    [text
-//                        boundingRectWithSize:rect.size
-//                        options:NSStringDrawingUsesLineFragmentOrigin
-//                        attributes:@{ NSFontAttributeName:_valueLabelFont }
-//                context:nil]
-//                .size.width;
-//                
-//                UILabel* label = [[UILabel alloc] initWithFrame:CGRectMake(p.x - width - 6, p.y + 2, width + 2, 14)];
-//                label.text = text;
-//                label.font = _valueLabelFont;
-//                label.textColor = _valueLabelTextColor;
-//                label.textAlignment = NSTextAlignmentCenter;
-//                label.backgroundColor = _valueLabelBackgroundColor;
-//                
-//                [self addSubview:label];
-//            }
-//        }
-//        
-//        if(_labelForIndex) {
-//            float scale = 1.0f;
-//            int q = (int)_data.count / _horizontalGridStep;
-//            scale = (CGFloat)(q * _horizontalGridStep) / (CGFloat)(_data.count - 1);
-//            
-//            for(int i=0;i<_horizontalGridStep + 1;i++) {
-//                NSInteger itemIndex = q * i;
-//                if(itemIndex >= _data.count)
-//                {
-//                    itemIndex = _data.count - 1;
-//                }
-//                
-//                NSString* text = _labelForIndex(itemIndex);
-//                
-//                if(!text)
-//                continue;
-//                
-//                CGPoint p = CGPointMake(_margin + i * (_axisWidth / _horizontalGridStep) * scale, _axisHeight + _margin);
-//                
-//                CGRect rect = CGRectMake(_margin, p.y + 2, self.frame.size.width - _margin * 2 - 4.0f, 14);
-//                
-//                float width =
-//                    [text
-//                        boundingRectWithSize:rect.size
-//                        options:NSStringDrawingUsesLineFragmentOrigin
-//                        attributes:@{ NSFontAttributeName:_indexLabelFont }
-//                context:nil]
-//                .size.width;
-//                
-//                UILabel* label = [[UILabel alloc] initWithFrame:CGRectMake(p.x - 4.0f, p.y + 2, width + 2, 14)];
-//                label.text = text;
-//                label.font = _indexLabelFont;
-//                label.textColor = _indexLabelTextColor;
-//                label.backgroundColor = _indexLabelBackgroundColor;
-//                
-//                [self addSubview:label];
-//            }
-//        }
+        if(nil != labelForValue) {
+            for i in 0...verticalGridStep - 1 {
+                var gridStep = CGFloat(verticalGridStep)
+                var index = CGFloat(i)
+                var xOffset: CGFloat = valueLabelPosition == ValueLabelPositionType.Right ? axisWidth : 0
+                let point = CGPoint(x: margin + xOffset,
+                    y: axisHeight + margin - (index + 1) * axisHeight / gridStep)
+                
+                let labelText: String? = labelForValue!(minBound + (maxBound - minBound) / gridStep * (index + 1))
+                
+                if(nil == labelText) {
+                    continue
+                }
+                
+                let rect = CGRect(x: margin,
+                    y: point.y + 2,
+                    width: self.frame.size.width - margin * 2 - 4,
+                    height: 14)
+                
+                let width = labelText!.boundingRectWithSize(rect.size,
+                    options: NSStringDrawingOptions.UsesLineFragmentOrigin,
+                    attributes: [NSFontAttributeName: valueLabelFont],
+                    context: nil).size.width
+                
+                let label = UILabel(frame: CGRect(x: point.x - width - 6, y: point.y + 2, width: width + 2, height: 14))
+                label.text = labelText!;
+                label.font = valueLabelFont;
+                label.textColor = valueLabelTextColor;
+                label.textAlignment = NSTextAlignment.Center
+                label.backgroundColor = valueLabelBackgroundColor;
+                
+                self.addSubview(label)
+            }
+        }
+        
+        if(nil != labelForIndex) {
+            let gridStep = CGFloat(horizontalGridStep)
+            var scale: CGFloat = 1
+            let q = data.count / horizontalGridStep;
+            scale = (CGFloat)(q * horizontalGridStep) / (CGFloat)(data.count - 1);
+            
+            for i in 0...horizontalGridStep {
+                let index = CGFloat(i)
+                var itemIndex = q * i
+                if(itemIndex >= data.count)
+                {
+                    itemIndex = data.count - 1
+                }
+                
+                let labelText = labelForIndex!(itemIndex)
+                
+                if(nil == labelText) {
+                    continue
+                }
+                
+                let point = CGPoint(x: margin + index * (axisWidth / gridStep) * scale,
+                    y: axisHeight + margin)
+                let rect = CGRect(x: margin,
+                    y: point.y + 2,
+                    width: self.frame.size.width - margin * 2 - 4,
+                    height: 14)
+                
+                let width = labelText!.boundingRectWithSize(rect.size,
+                    options: NSStringDrawingOptions.UsesLineFragmentOrigin,
+                    attributes: [NSFontAttributeName: indexLabelFont],
+                    context: nil).size.width
+                
+                let label = UILabel(frame: CGRect(x: point.x - 4, y: point.y + 2, width: width + 2, height: 14))
+                label.text = labelText!;
+                label.font = indexLabelFont;
+                label.textColor = indexLabelTextColor;
+                label.backgroundColor = indexLabelBackgroundColor;
+                
+                self.addSubview(label)
+            }
+        }
         
         self.setNeedsDisplay()
     }
@@ -274,14 +285,14 @@ class FSLineChart: UIView {
         CGContextStrokePath(context);
         
         var scale: CGFloat = 1.0;
-        //let q = data.count / horizontalGridStep;
-        //scale = (CGFloat)(q * horizontalGridStep) / (CGFloat)(data.count - 1);
+        let q = data.count / horizontalGridStep;
+        scale = (CGFloat)(q * horizontalGridStep) / (CGFloat)(data.count - 1);
         
         var minBound = min(minimum, 0);
         var maxBound = max(maximum, 0);
         
         if(drawInnerGrid!) {
-            for i in 0...horizontalGridStep {
+            for i in 0...horizontalGridStep - 1 {
                 CGContextSetStrokeColorWithColor(context, innerGridColor.CGColor)
                 CGContextSetLineWidth(context, innerGridLineWidth)
                 
