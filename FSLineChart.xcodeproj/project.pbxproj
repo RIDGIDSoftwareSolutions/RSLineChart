@@ -7,15 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8EA19AEC19DB55E9005F4BD1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EA19AEB19DB55E9005F4BD1 /* main.m */; };
-		8EA19AEF19DB55E9005F4BD1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EA19AEE19DB55E9005F4BD1 /* AppDelegate.m */; };
-		8EA19AF219DB55E9005F4BD1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EA19AF119DB55E9005F4BD1 /* ViewController.m */; };
+		670E67311A0D4BB80008E308 /* FSLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670E67301A0D4BB80008E308 /* FSLine.swift */; };
+		670E67321A0D4BB80008E308 /* FSLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670E67301A0D4BB80008E308 /* FSLine.swift */; };
+		670E67341A0D572C0008E308 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670E67331A0D572C0008E308 /* ViewController.swift */; };
+		670E67351A0D572C0008E308 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670E67331A0D572C0008E308 /* ViewController.swift */; };
+		670E67371A0D5F8E0008E308 /* FSLineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670E67361A0D5F8E0008E308 /* FSLineChart.swift */; };
+		670E67381A0D5F8E0008E308 /* FSLineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670E67361A0D5F8E0008E308 /* FSLineChart.swift */; };
+		670E673A1A10FD190008E308 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670E67391A10FD190008E308 /* AppDelegate.swift */; };
+		670E673B1A10FD190008E308 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670E67391A10FD190008E308 /* AppDelegate.swift */; };
 		8EA19AF519DB55E9005F4BD1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EA19AF319DB55E9005F4BD1 /* Main.storyboard */; };
 		8EA19AF719DB55E9005F4BD1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8EA19AF619DB55E9005F4BD1 /* Images.xcassets */; };
 		8EA19AFA19DB55E9005F4BD1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8EA19AF819DB55E9005F4BD1 /* LaunchScreen.xib */; };
-		8EA19B0619DB55E9005F4BD1 /* FSLineChartTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EA19B0519DB55E9005F4BD1 /* FSLineChartTests.m */; };
-		8EA19B1119DB5696005F4BD1 /* FSLineChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EA19B1019DB5696005F4BD1 /* FSLineChart.m */; };
-		8EA19B1519DB56E8005F4BD1 /* UIColor+FSPalette.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EA19B1419DB56E8005F4BD1 /* UIColor+FSPalette.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,23 +31,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		670E67301A0D4BB80008E308 /* FSLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSLine.swift; sourceTree = "<group>"; };
+		670E67331A0D572C0008E308 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		670E67361A0D5F8E0008E308 /* FSLineChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSLineChart.swift; sourceTree = "<group>"; };
+		670E67391A10FD190008E308 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8EA19AE619DB55E9005F4BD1 /* FSLineChart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FSLineChart.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EA19AEA19DB55E9005F4BD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8EA19AEB19DB55E9005F4BD1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		8EA19AED19DB55E9005F4BD1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		8EA19AEE19DB55E9005F4BD1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		8EA19AF019DB55E9005F4BD1 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		8EA19AF119DB55E9005F4BD1 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		8EA19AF419DB55E9005F4BD1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8EA19AF619DB55E9005F4BD1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		8EA19AF919DB55E9005F4BD1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		8EA19AFF19DB55E9005F4BD1 /* FSLineChartTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FSLineChartTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EA19B0419DB55E9005F4BD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8EA19B0519DB55E9005F4BD1 /* FSLineChartTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FSLineChartTests.m; sourceTree = "<group>"; };
-		8EA19B0F19DB5696005F4BD1 /* FSLineChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FSLineChart.h; path = FSLineChart/FSLineChart.h; sourceTree = "<group>"; };
-		8EA19B1019DB5696005F4BD1 /* FSLineChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FSLineChart.m; path = FSLineChart/FSLineChart.m; sourceTree = "<group>"; };
-		8EA19B1319DB56E8005F4BD1 /* UIColor+FSPalette.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+FSPalette.h"; path = "FSLineChart/UIColor+FSPalette.h"; sourceTree = "<group>"; };
-		8EA19B1419DB56E8005F4BD1 /* UIColor+FSPalette.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIColor+FSPalette.m"; path = "FSLineChart/UIColor+FSPalette.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,14 +84,12 @@
 			isa = PBXGroup;
 			children = (
 				8EA19B1219DB569A005F4BD1 /* FSLineChart */,
-				8EA19AED19DB55E9005F4BD1 /* AppDelegate.h */,
-				8EA19AEE19DB55E9005F4BD1 /* AppDelegate.m */,
-				8EA19AF019DB55E9005F4BD1 /* ViewController.h */,
-				8EA19AF119DB55E9005F4BD1 /* ViewController.m */,
+				670E67331A0D572C0008E308 /* ViewController.swift */,
 				8EA19AF319DB55E9005F4BD1 /* Main.storyboard */,
 				8EA19AF619DB55E9005F4BD1 /* Images.xcassets */,
 				8EA19AF819DB55E9005F4BD1 /* LaunchScreen.xib */,
 				8EA19AE919DB55E9005F4BD1 /* Supporting Files */,
+				670E67391A10FD190008E308 /* AppDelegate.swift */,
 			);
 			path = FSLineChart;
 			sourceTree = "<group>";
@@ -104,7 +98,6 @@
 			isa = PBXGroup;
 			children = (
 				8EA19AEA19DB55E9005F4BD1 /* Info.plist */,
-				8EA19AEB19DB55E9005F4BD1 /* main.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -112,7 +105,6 @@
 		8EA19B0219DB55E9005F4BD1 /* FSLineChartTests */ = {
 			isa = PBXGroup;
 			children = (
-				8EA19B0519DB55E9005F4BD1 /* FSLineChartTests.m */,
 				8EA19B0319DB55E9005F4BD1 /* Supporting Files */,
 			);
 			path = FSLineChartTests;
@@ -129,10 +121,8 @@
 		8EA19B1219DB569A005F4BD1 /* FSLineChart */ = {
 			isa = PBXGroup;
 			children = (
-				8EA19B1319DB56E8005F4BD1 /* UIColor+FSPalette.h */,
-				8EA19B1419DB56E8005F4BD1 /* UIColor+FSPalette.m */,
-				8EA19B0F19DB5696005F4BD1 /* FSLineChart.h */,
-				8EA19B1019DB5696005F4BD1 /* FSLineChart.m */,
+				670E67361A0D5F8E0008E308 /* FSLineChart.swift */,
+				670E67301A0D4BB80008E308 /* FSLine.swift */,
 			);
 			name = FSLineChart;
 			sourceTree = "<group>";
@@ -237,11 +227,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8EA19AF219DB55E9005F4BD1 /* ViewController.m in Sources */,
-				8EA19AEF19DB55E9005F4BD1 /* AppDelegate.m in Sources */,
-				8EA19AEC19DB55E9005F4BD1 /* main.m in Sources */,
-				8EA19B1119DB5696005F4BD1 /* FSLineChart.m in Sources */,
-				8EA19B1519DB56E8005F4BD1 /* UIColor+FSPalette.m in Sources */,
+				670E67371A0D5F8E0008E308 /* FSLineChart.swift in Sources */,
+				670E67341A0D572C0008E308 /* ViewController.swift in Sources */,
+				670E673A1A10FD190008E308 /* AppDelegate.swift in Sources */,
+				670E67311A0D4BB80008E308 /* FSLine.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,7 +238,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8EA19B0619DB55E9005F4BD1 /* FSLineChartTests.m in Sources */,
+				670E67351A0D572C0008E308 /* ViewController.swift in Sources */,
+				670E67321A0D4BB80008E308 /* FSLine.swift in Sources */,
+				670E673B1A10FD190008E308 /* AppDelegate.swift in Sources */,
+				670E67381A0D5F8E0008E308 /* FSLineChart.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,9 +355,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = FSLineChart/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -373,6 +367,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = FSLineChart/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -383,6 +378,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -394,6 +390,7 @@
 				INFOPLIST_FILE = FSLineChartTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FSLineChart.app/FSLineChart";
 			};
 			name = Debug;
@@ -402,6 +399,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
