@@ -12,11 +12,23 @@ import UIKit
 @objc class FSLine : NSObject {
     var lineColor: UIColor!
     var fillColor: UIColor?
-    var dataPoints: [(CGFloat, CGFloat)]!
+    var dataPoints: [CGPoint]!
         
-    init(lineColor: UIColor!, fillColor: UIColor?, dataPoints: [(CGFloat, CGFloat)]) {
+    init(lineColor: UIColor!, fillColor: UIColor?, dataPoints: [CGPoint]) {
         self.lineColor = lineColor
         self.dataPoints = dataPoints
         self.fillColor = fillColor
+    }
+    
+    func maxValue() -> CGFloat {
+        return self.dataPoints.reduce(CGFloat.min, combine: { max($0, $1.y) })
+    }
+    
+    func minValue() -> CGFloat {
+        return self.dataPoints.reduce(CGFloat.max, combine: { min($0, $1.y) })
+    }
+    
+    func maxIndex() -> CGFloat {
+        return self.dataPoints.reduce(CGFloat.min, combine: { max($0, $1.x) })
     }
 }

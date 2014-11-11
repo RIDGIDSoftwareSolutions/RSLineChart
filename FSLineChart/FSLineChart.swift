@@ -16,8 +16,6 @@ enum ValueLabelPositionType {
 
 class FSLineChart: UIView {
     
-    var color: UIColor!
-    var fillColor: UIColor?
     var verticalGridStep: Int!
     var horizontalGridStep: Int!
     var margin: CGFloat!
@@ -43,14 +41,14 @@ class FSLineChart: UIView {
     var valueLabelPosition: ValueLabelPositionType!
     
     var labelForValue: ((CGFloat) -> String?)?
-    var labelForIndex: ((Int) -> String?)?
+    var labelForIndex: ((CGFloat) -> String?)?
     
     var minimum: CGFloat!
     var maximum: CGFloat!
     var initialPath: CGMutablePathRef?
     var newPath: CGMutablePathRef!
     
-    var data: [CGFloat]!
+    var lines: [FSLine]!
     
     override init() {
         super.init()
@@ -65,8 +63,6 @@ class FSLineChart: UIView {
     func setDefaultParameters() {
         self.backgroundColor = UIColor.whiteColor()
 
-        color = UIColor(red: 0.18, green: 0.67, blue: 0.84, alpha: 1.0)
-        fillColor = color.colorWithAlphaComponent(0.25)
         verticalGridStep = 3
         horizontalGridStep = 3
         margin = 5
@@ -97,8 +93,8 @@ class FSLineChart: UIView {
         super.init(coder: aDecoder)
     }
     
-    func setChartData(chartData: [CGFloat]) {
-        data = chartData
+    func setLines(lines: [FSLine]) {
+        self.lines = lines
         
         computeBounds()
         
@@ -150,15 +146,16 @@ class FSLineChart: UIView {
         if(nil != labelForIndex) {
             let gridStep = CGFloat(horizontalGridStep)
             var scale: CGFloat = 1
-            let q = data.count / horizontalGridStep;
-            scale = (CGFloat)(q * horizontalGridStep) / (CGFloat)(data.count - 1);
+            let q = getMaxDataPoints() / horizontalGridStep;
+            scale = (CGFloat)(q * horizontalGridStep) / (CGFloat)(getMaxDataPoints() - 1);
+            let maxIndex = lines.map({ $0.maxIndex() }).reduce(CGFloat.min, combine: { max($0, $1)})
             
             for i in 0...horizontalGridStep {
                 let index = CGFloat(i)
-                var itemIndex = q * i
-                if(itemIndex >= data.count)
+                var itemIndex: CGFloat = CGFloat(q) * index
+                if(itemIndex >= maxIndex)
                 {
-                    itemIndex = data.count - 1
+                    itemIndex = maxIndex - 1
                 }
                 
                 let labelText = labelForIndex!(itemIndex)
@@ -192,13 +189,22 @@ class FSLineChart: UIView {
         self.setNeedsDisplay()
     }
     
+    private var maxDataPoints: Int?
+    private func getMaxDataPoints() -> Int {
+        if(nil == maxDataPoints) {
+            maxDataPoints = lines.map({$0.dataPoints.count}).reduce(Int.min, combine: { max($0, $1)})
+        }
+        
+        return maxDataPoints!
+    }
+    
     private func computeBounds() {
         minimum = CGFloat.max
         maximum = -CGFloat.max
         
-        for i in 0...data.count - 1 {
-            minimum = min(minimum, data[i])
-            maximum = max(maximum, data[i])
+        for i in 0...getMaxDataPoints() - 1 {
+            minimum = lines.map({ $0.minValue() }).reduce(minimum, combine: { min($0, $1)})
+            maximum = lines.map({ $0.maxValue() }).reduce(maximum, combine: { max($0, $1)})
         }
         
         // The idea is to adjust the minimun and the maximum value to display the whole chart in the view, and if possible with nice "round" steps.
@@ -285,8 +291,8 @@ class FSLineChart: UIView {
         CGContextStrokePath(context);
         
         var scale: CGFloat = 1.0;
-        let q = data.count / horizontalGridStep;
-        scale = (CGFloat)(q * horizontalGridStep) / (CGFloat)(data.count - 1);
+        let q = getMaxDataPoints() / horizontalGridStep;
+        scale = (CGFloat)(q * horizontalGridStep) / (CGFloat)(getMaxDataPoints() - 1);
         
         var minBound = min(minimum, 0);
         var maxBound = max(maximum, 0);
@@ -344,75 +350,78 @@ class FSLineChart: UIView {
         let height = CGFloat(axisHeight)
         let scale: CGFloat = height / (maxBound - minBound)
     
-        let noPath = getLinePath(0, smoothed: bezierSmoothing, closed: false)
-        let path = getLinePath(scale, smoothed: bezierSmoothing, closed: false)
-        let noFill = getLinePath(0, smoothed: bezierSmoothing, closed: true)
-        let fill = getLinePath(scale, smoothed: bezierSmoothing, closed: true)
+        for line in lines {
+            let noPath = getLinePath(line, scale: 0, smoothed: bezierSmoothing, closed: false)
+            let path = getLinePath(line, scale: scale, smoothed: bezierSmoothing, closed: false)
+            let noFill = getLinePath(line, scale: 0, smoothed: bezierSmoothing, closed: true)
+            let fill = getLinePath(line, scale: scale, smoothed: bezierSmoothing, closed: true)
     
-        if(nil != fillColor) {
-            let fillLayer = CAShapeLayer()
-            fillLayer.frame = CGRect(x: self.bounds.origin.x,
+            if(nil != line.fillColor) {
+                let fillLayer = CAShapeLayer()
+                fillLayer.frame = CGRect(x: self.bounds.origin.x,
+                    y: self.bounds.origin.y + minBound * scale,
+                    width: self.bounds.size.width,
+                    height: self.bounds.size.height)
+                fillLayer.bounds = self.bounds
+                fillLayer.path = fill.CGPath
+                fillLayer.strokeColor = nil
+                fillLayer.fillColor = line.fillColor!.CGColor
+                fillLayer.lineWidth = 0
+                fillLayer.lineJoin = kCALineJoinRound
+        
+                self.layer.addSublayer(fillLayer)
+                
+                let fillAnimation = CABasicAnimation(keyPath: "path")
+                fillAnimation.duration = CFTimeInterval(animationDuration)
+                fillAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+                fillAnimation.fillMode = kCAFillModeForwards
+                fillAnimation.fromValue = noFill.CGPath
+                fillAnimation.toValue = fill.CGPath
+                fillLayer.addAnimation(fillAnimation, forKey: "path")
+            }
+        
+            let pathLayer = CAShapeLayer()
+            pathLayer.frame = CGRect(x: self.bounds.origin.x,
                 y: self.bounds.origin.y + minBound * scale,
                 width: self.bounds.size.width,
                 height: self.bounds.size.height)
-            fillLayer.bounds = self.bounds
-            fillLayer.path = fill.CGPath
-            fillLayer.strokeColor = nil
-            fillLayer.fillColor = fillColor!.CGColor
-            fillLayer.lineWidth = 0
-            fillLayer.lineJoin = kCALineJoinRound
-    
-            self.layer.addSublayer(fillLayer)
-            
-            let fillAnimation = CABasicAnimation(keyPath: "path")
-            fillAnimation.duration = CFTimeInterval(animationDuration)
-            fillAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
-            fillAnimation.fillMode = kCAFillModeForwards
-            fillAnimation.fromValue = noFill.CGPath
-            fillAnimation.toValue = fill.CGPath
-            fillLayer.addAnimation(fillAnimation, forKey: "path")
-        }
-    
-        let pathLayer = CAShapeLayer()
-        pathLayer.frame = CGRect(x: self.bounds.origin.x,
-            y: self.bounds.origin.y + minBound * scale,
-            width: self.bounds.size.width,
-            height: self.bounds.size.height)
-        pathLayer.bounds = self.bounds
-        pathLayer.path = path.CGPath
-        pathLayer.strokeColor = color.CGColor
-        pathLayer.fillColor = nil
-        pathLayer.lineWidth = lineWidth
-        pathLayer.lineJoin = kCALineJoinRound
-    
-        self.layer.addSublayer(pathLayer)
-    
-        if(nil != fillColor) {
-            let pathAnimation = CABasicAnimation(keyPath: "path")
-            pathAnimation.duration = CFTimeInterval(animationDuration)
-            pathAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
-            pathAnimation.fromValue = noPath.CGPath
-            pathAnimation.toValue = path.CGPath
-            
-            pathLayer.addAnimation(pathAnimation, forKey: "path")
-        } else {
-            
-            let pathAnimation = CABasicAnimation(keyPath: "strokeEnd")
-            pathAnimation.duration = CFTimeInterval(animationDuration)
-            pathAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
-            pathAnimation.fromValue = 0
-            pathAnimation.toValue = 1
-            
-            pathLayer.addAnimation(pathAnimation, forKey: "strokeEnd")
+            pathLayer.bounds = self.bounds
+            pathLayer.path = path.CGPath
+            pathLayer.strokeColor = line.lineColor.CGColor
+            pathLayer.fillColor = nil
+            pathLayer.lineWidth = lineWidth
+            pathLayer.lineJoin = kCALineJoinRound
+        
+            self.layer.addSublayer(pathLayer)
+        
+            if(nil != line.fillColor) {
+                let pathAnimation = CABasicAnimation(keyPath: "path")
+                pathAnimation.duration = CFTimeInterval(animationDuration)
+                pathAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+                pathAnimation.fromValue = noPath.CGPath
+                pathAnimation.toValue = path.CGPath
+                
+                pathLayer.addAnimation(pathAnimation, forKey: "path")
+            } else {
+                
+                let pathAnimation = CABasicAnimation(keyPath: "strokeEnd")
+                pathAnimation.duration = CFTimeInterval(animationDuration)
+                pathAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+                pathAnimation.fromValue = 0
+                pathAnimation.toValue = 1
+                
+                pathLayer.addAnimation(pathAnimation, forKey: "strokeEnd")
+            }
         }
     }
     
-    private func getLinePath(scale: CGFloat, smoothed: Bool, closed: Bool) -> UIBezierPath {
+    private func getLinePath(line: FSLine, scale: CGFloat, smoothed: Bool, closed: Bool) -> UIBezierPath {
         let path = UIBezierPath()
         
         if(smoothed) {
-            for i in 0...data.count - 2 {
-                var currentPoint = getPointForIndex(i, scale: scale)
+            for i in 0...line.dataPoints.count - 2 {
+                var dataPoint = line.dataPoints[i]
+                var currentPoint = getScaledIndex(dataPoint, scale: scale)
                 
                 // Start the path drawing
                 if(i == 0) {
@@ -420,8 +429,13 @@ class FSLineChart: UIView {
                 }
                 
                 // First control point
-                var nextPoint = getPointForIndex(i + 1, scale: scale)
-                var previousPoint = getPointForIndex(i - 1, scale: scale)
+                var nextPoint = getScaledIndex(line.dataPoints[i + 1], scale: scale)
+                var previousPoint = CGPointZero
+                if(i != 0) {
+                    var previousPoint = getScaledIndex(line.dataPoints[i - 1], scale: scale)
+                }
+                
+                
                 var m = CGPointZero
                 
                 if(i > 0) {
@@ -436,12 +450,17 @@ class FSLineChart: UIView {
                     y: currentPoint.y + m.y * bezierSmoothingTension)
                 
                 // Second control point
-                nextPoint = getPointForIndex(i + 2, scale: scale)
-                previousPoint = getPointForIndex(i, scale: scale)
-                currentPoint = getPointForIndex(i + 1, scale: scale)
+                if(i + 2 >= line.dataPoints.count) {
+                    nextPoint = CGPointZero
+                }
+                else {
+                    nextPoint = getScaledIndex(line.dataPoints[i + 2], scale: scale)
+                }
+                previousPoint = getScaledIndex(line.dataPoints[i], scale: scale)
+                currentPoint = getScaledIndex(line.dataPoints[i + 1], scale: scale)
                 m = CGPointZero;
                 
-                if(i < data.count - 2) {
+                if(i < line.dataPoints.count - 2) {
                     m.x = (nextPoint.x - previousPoint.x) / 2;
                     m.y = (nextPoint.y - previousPoint.y) / 2;
                 } else {
@@ -456,35 +475,32 @@ class FSLineChart: UIView {
             }
             
         } else {
-            for i in 0...data.count - 1 {
-                if(i > 0) {
-                    path.addLineToPoint(getPointForIndex(i, scale: scale))
-                } else {
-                    path.moveToPoint(getPointForIndex(i, scale: scale))
+            var first = true
+            for dataPoint in line.dataPoints {
+                if(first) {
+                    path.moveToPoint(getScaledIndex(dataPoint, scale: scale))
+                    first = false
+                }
+                else {
+                    path.addLineToPoint(getScaledIndex(dataPoint, scale: scale))
                 }
             }
         }
         
         if(closed) {
             // Closing the path for the fill drawing
-            path.addLineToPoint(getPointForIndex(data.count - 1, scale: scale))
-            path.addLineToPoint(getPointForIndex(data.count - 1, scale: 0))
-            path.addLineToPoint(getPointForIndex(0, scale: 0))
-            path.addLineToPoint(getPointForIndex(0, scale: scale))
+            path.addLineToPoint(getScaledIndex(line.dataPoints[line.dataPoints.count - 1], scale: scale))
+            path.addLineToPoint(getScaledIndex(line.dataPoints[line.dataPoints.count - 1], scale: 0))
+            path.addLineToPoint(getScaledIndex(line.dataPoints[0], scale: 0))
+            path.addLineToPoint(getScaledIndex(line.dataPoints[0], scale: scale))
         }
         
         return path;
     }
     
-    private func getPointForIndex(index: Int, scale: CGFloat) -> CGPoint {
-        if(index < 0 || index >= data.count) {
-            return CGPointZero
-        }
-        
-        let indexFloat = CGFloat(index)
-        let size = CGFloat(data.count - 1)
-        let number = data[index]
-        return CGPoint(x: margin + indexFloat * (axisWidth / size),
-            y: axisHeight + margin - number * scale)
+    private func getScaledIndex(dataPoint: CGPoint, scale: CGFloat) -> CGPoint {
+        let size = CGFloat(getMaxDataPoints() - 1)
+        return CGPoint(x: margin + dataPoint.x * (axisWidth / size),
+            y: axisHeight + margin - dataPoint.y * scale)
     }
 }
