@@ -153,7 +153,7 @@ class FSLineChart: UIView {
             for i in 0...horizontalGridStep {
                 let index = CGFloat(i)
                 var itemIndex: CGFloat = CGFloat(q) * index
-                if(itemIndex >= maxIndex)
+                if(itemIndex > maxIndex)
                 {
                     itemIndex = maxIndex - 1
                 }
