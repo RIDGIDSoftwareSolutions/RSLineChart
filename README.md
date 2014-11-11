@@ -40,7 +40,7 @@ RSLineChart is a subclass of UIView so it can be added as regular view. The bloc
   Here is an example with 2 lines:
   
   ```swift
-  let chart = RSLineChart(frame: CGRect(x: 45, y: 460, width: UIScreen.mainScreen().bounds.size.width - 65, height: 200))
+        let chart = RSLineChart(frame: CGRect(x: 45, y: 460, width: UIScreen.mainScreen().bounds.size.width - 65, height: 200))
         chart.verticalGridStep = 3
         chart.horizontalGridStep = 4
         chart.bezierSmoothing = false
