@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		670E67311A0D4BB80008E308 /* FSLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670E67301A0D4BB80008E308 /* FSLine.swift */; };
-		670E67321A0D4BB80008E308 /* FSLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670E67301A0D4BB80008E308 /* FSLine.swift */; };
+		670E67311A0D4BB80008E308 /* RSLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670E67301A0D4BB80008E308 /* RSLine.swift */; };
+		670E67321A0D4BB80008E308 /* RSLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670E67301A0D4BB80008E308 /* RSLine.swift */; };
 		670E67341A0D572C0008E308 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670E67331A0D572C0008E308 /* ViewController.swift */; };
 		670E67351A0D572C0008E308 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670E67331A0D572C0008E308 /* ViewController.swift */; };
-		670E67371A0D5F8E0008E308 /* FSLineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670E67361A0D5F8E0008E308 /* FSLineChart.swift */; };
-		670E67381A0D5F8E0008E308 /* FSLineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670E67361A0D5F8E0008E308 /* FSLineChart.swift */; };
+		670E67371A0D5F8E0008E308 /* RSLineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670E67361A0D5F8E0008E308 /* RSLineChart.swift */; };
+		670E67381A0D5F8E0008E308 /* RSLineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670E67361A0D5F8E0008E308 /* RSLineChart.swift */; };
 		670E673A1A10FD190008E308 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670E67391A10FD190008E308 /* AppDelegate.swift */; };
 		670E673B1A10FD190008E308 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670E67391A10FD190008E308 /* AppDelegate.swift */; };
 		8EA19AF519DB55E9005F4BD1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EA19AF319DB55E9005F4BD1 /* Main.storyboard */; };
@@ -26,21 +26,21 @@
 			containerPortal = 8EA19ADE19DB55E9005F4BD1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 8EA19AE519DB55E9005F4BD1;
-			remoteInfo = FSLineChart;
+			remoteInfo = RSLineChart;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		670E67301A0D4BB80008E308 /* FSLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSLine.swift; sourceTree = "<group>"; };
+		670E67301A0D4BB80008E308 /* RSLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSLine.swift; sourceTree = "<group>"; };
 		670E67331A0D572C0008E308 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		670E67361A0D5F8E0008E308 /* FSLineChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSLineChart.swift; sourceTree = "<group>"; };
+		670E67361A0D5F8E0008E308 /* RSLineChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSLineChart.swift; sourceTree = "<group>"; };
 		670E67391A10FD190008E308 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8EA19AE619DB55E9005F4BD1 /* FSLineChart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FSLineChart.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8EA19AE619DB55E9005F4BD1 /* RSLineChart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RSLineChart.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EA19AEA19DB55E9005F4BD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8EA19AF419DB55E9005F4BD1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8EA19AF619DB55E9005F4BD1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		8EA19AF919DB55E9005F4BD1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		8EA19AFF19DB55E9005F4BD1 /* FSLineChartTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FSLineChartTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8EA19AFF19DB55E9005F4BD1 /* RSLineChartTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RSLineChartTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EA19B0419DB55E9005F4BD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -65,8 +65,8 @@
 		8EA19ADD19DB55E9005F4BD1 = {
 			isa = PBXGroup;
 			children = (
-				8EA19AE819DB55E9005F4BD1 /* FSLineChart */,
-				8EA19B0219DB55E9005F4BD1 /* FSLineChartTests */,
+				8EA19AE819DB55E9005F4BD1 /* RSLineChart */,
+				8EA19B0219DB55E9005F4BD1 /* RSLineChartTests */,
 				8EA19AE719DB55E9005F4BD1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -74,16 +74,16 @@
 		8EA19AE719DB55E9005F4BD1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8EA19AE619DB55E9005F4BD1 /* FSLineChart.app */,
-				8EA19AFF19DB55E9005F4BD1 /* FSLineChartTests.xctest */,
+				8EA19AE619DB55E9005F4BD1 /* RSLineChart.app */,
+				8EA19AFF19DB55E9005F4BD1 /* RSLineChartTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		8EA19AE819DB55E9005F4BD1 /* FSLineChart */ = {
+		8EA19AE819DB55E9005F4BD1 /* RSLineChart */ = {
 			isa = PBXGroup;
 			children = (
-				8EA19B1219DB569A005F4BD1 /* FSLineChart */,
+				8EA19B1219DB569A005F4BD1 /* RSLineChart */,
 				670E67331A0D572C0008E308 /* ViewController.swift */,
 				8EA19AF319DB55E9005F4BD1 /* Main.storyboard */,
 				8EA19AF619DB55E9005F4BD1 /* Images.xcassets */,
@@ -91,7 +91,8 @@
 				8EA19AE919DB55E9005F4BD1 /* Supporting Files */,
 				670E67391A10FD190008E308 /* AppDelegate.swift */,
 			);
-			path = FSLineChart;
+			name = RSLineChart;
+			path = RSLineChart;
 			sourceTree = "<group>";
 		};
 		8EA19AE919DB55E9005F4BD1 /* Supporting Files */ = {
@@ -102,12 +103,13 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		8EA19B0219DB55E9005F4BD1 /* FSLineChartTests */ = {
+		8EA19B0219DB55E9005F4BD1 /* RSLineChartTests */ = {
 			isa = PBXGroup;
 			children = (
 				8EA19B0319DB55E9005F4BD1 /* Supporting Files */,
 			);
-			path = FSLineChartTests;
+			name = RSLineChartTests;
+			path = RSLineChartTests;
 			sourceTree = "<group>";
 		};
 		8EA19B0319DB55E9005F4BD1 /* Supporting Files */ = {
@@ -118,21 +120,21 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		8EA19B1219DB569A005F4BD1 /* FSLineChart */ = {
+		8EA19B1219DB569A005F4BD1 /* RSLineChart */ = {
 			isa = PBXGroup;
 			children = (
-				670E67361A0D5F8E0008E308 /* FSLineChart.swift */,
-				670E67301A0D4BB80008E308 /* FSLine.swift */,
+				670E67361A0D5F8E0008E308 /* RSLineChart.swift */,
+				670E67301A0D4BB80008E308 /* RSLine.swift */,
 			);
-			name = FSLineChart;
+			name = RSLineChart;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8EA19AE519DB55E9005F4BD1 /* FSLineChart */ = {
+		8EA19AE519DB55E9005F4BD1 /* RSLineChart */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8EA19B0919DB55E9005F4BD1 /* Build configuration list for PBXNativeTarget "FSLineChart" */;
+			buildConfigurationList = 8EA19B0919DB55E9005F4BD1 /* Build configuration list for PBXNativeTarget "RSLineChart" */;
 			buildPhases = (
 				8EA19AE219DB55E9005F4BD1 /* Sources */,
 				8EA19AE319DB55E9005F4BD1 /* Frameworks */,
@@ -142,14 +144,14 @@
 			);
 			dependencies = (
 			);
-			name = FSLineChart;
-			productName = FSLineChart;
-			productReference = 8EA19AE619DB55E9005F4BD1 /* FSLineChart.app */;
+			name = RSLineChart;
+			productName = RSLineChart;
+			productReference = 8EA19AE619DB55E9005F4BD1 /* RSLineChart.app */;
 			productType = "com.apple.product-type.application";
 		};
-		8EA19AFE19DB55E9005F4BD1 /* FSLineChartTests */ = {
+		8EA19AFE19DB55E9005F4BD1 /* RSLineChartTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8EA19B0C19DB55E9005F4BD1 /* Build configuration list for PBXNativeTarget "FSLineChartTests" */;
+			buildConfigurationList = 8EA19B0C19DB55E9005F4BD1 /* Build configuration list for PBXNativeTarget "RSLineChartTests" */;
 			buildPhases = (
 				8EA19AFB19DB55E9005F4BD1 /* Sources */,
 				8EA19AFC19DB55E9005F4BD1 /* Frameworks */,
@@ -160,9 +162,9 @@
 			dependencies = (
 				8EA19B0119DB55E9005F4BD1 /* PBXTargetDependency */,
 			);
-			name = FSLineChartTests;
-			productName = FSLineChartTests;
-			productReference = 8EA19AFF19DB55E9005F4BD1 /* FSLineChartTests.xctest */;
+			name = RSLineChartTests;
+			productName = RSLineChartTests;
+			productReference = 8EA19AFF19DB55E9005F4BD1 /* RSLineChartTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -183,7 +185,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 8EA19AE119DB55E9005F4BD1 /* Build configuration list for PBXProject "FSLineChart" */;
+			buildConfigurationList = 8EA19AE119DB55E9005F4BD1 /* Build configuration list for PBXProject "RSLineChart" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -196,8 +198,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8EA19AE519DB55E9005F4BD1 /* FSLineChart */,
-				8EA19AFE19DB55E9005F4BD1 /* FSLineChartTests */,
+				8EA19AE519DB55E9005F4BD1 /* RSLineChart */,
+				8EA19AFE19DB55E9005F4BD1 /* RSLineChartTests */,
 			);
 		};
 /* End PBXProject section */
@@ -227,10 +229,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				670E67371A0D5F8E0008E308 /* FSLineChart.swift in Sources */,
+				670E67371A0D5F8E0008E308 /* RSLineChart.swift in Sources */,
 				670E67341A0D572C0008E308 /* ViewController.swift in Sources */,
 				670E673A1A10FD190008E308 /* AppDelegate.swift in Sources */,
-				670E67311A0D4BB80008E308 /* FSLine.swift in Sources */,
+				670E67311A0D4BB80008E308 /* RSLine.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,9 +241,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				670E67351A0D572C0008E308 /* ViewController.swift in Sources */,
-				670E67321A0D4BB80008E308 /* FSLine.swift in Sources */,
+				670E67321A0D4BB80008E308 /* RSLine.swift in Sources */,
 				670E673B1A10FD190008E308 /* AppDelegate.swift in Sources */,
-				670E67381A0D5F8E0008E308 /* FSLineChart.swift in Sources */,
+				670E67381A0D5F8E0008E308 /* RSLineChart.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,7 +252,7 @@
 /* Begin PBXTargetDependency section */
 		8EA19B0119DB55E9005F4BD1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 8EA19AE519DB55E9005F4BD1 /* FSLineChart */;
+			target = 8EA19AE519DB55E9005F4BD1 /* RSLineChart */;
 			targetProxy = 8EA19B0019DB55E9005F4BD1 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -356,9 +358,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				INFOPLIST_FILE = FSLineChart/Info.plist;
+				INFOPLIST_FILE = RSLineChart/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = RSLineChart;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -368,9 +370,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				INFOPLIST_FILE = FSLineChart/Info.plist;
+				INFOPLIST_FILE = RSLineChart/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = RSLineChart;
 			};
 			name = Release;
 		};
@@ -387,11 +389,11 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = FSLineChartTests/Info.plist;
+				INFOPLIST_FILE = RSLineChartTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = RSLineChartTests;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FSLineChart.app/FSLineChart";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RSLineChart.app/RSLineChart";
 			};
 			name = Debug;
 		};
@@ -404,17 +406,17 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = FSLineChartTests/Info.plist;
+				INFOPLIST_FILE = RSLineChartTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FSLineChart.app/FSLineChart";
+				PRODUCT_NAME = RSLineChartTests;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RSLineChart.app/RSLineChart";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		8EA19AE119DB55E9005F4BD1 /* Build configuration list for PBXProject "FSLineChart" */ = {
+		8EA19AE119DB55E9005F4BD1 /* Build configuration list for PBXProject "RSLineChart" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8EA19B0719DB55E9005F4BD1 /* Debug */,
@@ -423,7 +425,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8EA19B0919DB55E9005F4BD1 /* Build configuration list for PBXNativeTarget "FSLineChart" */ = {
+		8EA19B0919DB55E9005F4BD1 /* Build configuration list for PBXNativeTarget "RSLineChart" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8EA19B0A19DB55E9005F4BD1 /* Debug */,
@@ -432,7 +434,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8EA19B0C19DB55E9005F4BD1 /* Build configuration list for PBXNativeTarget "FSLineChartTests" */ = {
+		8EA19B0C19DB55E9005F4BD1 /* Build configuration list for PBXNativeTarget "RSLineChartTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8EA19B0D19DB55E9005F4BD1 /* Debug */,

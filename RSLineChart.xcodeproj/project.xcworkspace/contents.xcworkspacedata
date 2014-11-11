@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:FSLineChart.xcodeproj">
+      location = "self:RSLineChart.xcodeproj">
    </FileRef>
 </Workspace>

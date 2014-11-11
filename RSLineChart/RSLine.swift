@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-@objc class FSLine : NSObject {
+class RSLine : NSObject {
     var lineColor: UIColor!
     var fillColor: UIColor?
     var dataPoints: [CGPoint]!

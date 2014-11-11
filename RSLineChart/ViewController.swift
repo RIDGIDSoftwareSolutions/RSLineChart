@@ -1,6 +1,6 @@
 //
 //  ViewController.m
-//  FSLineChart
+//  RSLineChart
 //
 //  Created by Arthur GUIBERT on 30/09/2014.
 //  Copyright (c) 2014 Arthur GUIBERT. All rights reserved.
@@ -19,10 +19,10 @@ class ViewController : UIViewController {
         self.view.addSubview(chart4())
     }
     
-    private func chart1() -> FSLineChart {
+    private func chart1() -> RSLineChart {
     
         // Creating the line chart
-        let lineChart = FSLineChart(frame: CGRect(x: 20, y: 60, width: UIScreen.mainScreen().bounds.size.width - 40, height: 166))
+        let lineChart = RSLineChart(frame: CGRect(x: 20, y: 60, width: UIScreen.mainScreen().bounds.size.width - 40, height: 166))
     
         lineChart.verticalGridStep = 5;
         lineChart.horizontalGridStep = 9;
@@ -39,16 +39,16 @@ class ViewController : UIViewController {
             dataPoints.append(CGPoint(x: CGFloat(i), y: CGFloat(r - 400.0)))
         }
 
-        let line = FSLine(lineColor: UIColor.blueColor(), fillColor: UIColor.blueColor().colorWithAlphaComponent(0.25), dataPoints: dataPoints)
+        let line = RSLine(lineColor: UIColor.blueColor(), fillColor: UIColor.blueColor().colorWithAlphaComponent(0.25), dataPoints: dataPoints)
         lineChart.setLines([line])
     
         return lineChart;
     }
     
-    private func chart2() -> FSLineChart {
+    private func chart2() -> RSLineChart {
     
         // Creating the line chart
-        let lineChart = FSLineChart(frame: CGRect(x: 20, y: 260, width: UIScreen.mainScreen().bounds.size.width - 40, height: 166))
+        let lineChart = RSLineChart(frame: CGRect(x: 20, y: 260, width: UIScreen.mainScreen().bounds.size.width - 40, height: 166))
     
         lineChart.verticalGridStep = 3
         lineChart.horizontalGridStep = 2
@@ -67,18 +67,18 @@ class ViewController : UIViewController {
         }
         
         
-        let line = FSLine(lineColor: UIColor.orangeColor(), fillColor: nil, dataPoints: dataPoints)
+        let line = RSLine(lineColor: UIColor.orangeColor(), fillColor: nil, dataPoints: dataPoints)
         lineChart.setLines([line])
         
         return lineChart;
     }
     
-    private func chart3() -> FSLineChart {
+    private func chart3() -> RSLineChart {
 
         let months: [String] = ["January", "February", "March", "April", "May", "June", "July"]
     
         // Creating the line chart
-        let lineChart = FSLineChart(frame: CGRect(x: 20, y: 460, width: UIScreen.mainScreen().bounds.size.width - 40, height: 166))
+        let lineChart = RSLineChart(frame: CGRect(x: 20, y: 460, width: UIScreen.mainScreen().bounds.size.width - 40, height: 166))
     
         lineChart.verticalGridStep = 6;
         lineChart.horizontalGridStep = 3; // 151,187,205,0.2
@@ -98,14 +98,14 @@ class ViewController : UIViewController {
         }
         
         let lineColor = UIColor(red: 151.0/255.0, green: 187.0/255.0, blue: 205.0/255.0, alpha: 1.0)
-        let line = FSLine(lineColor: lineColor, fillColor: lineColor.colorWithAlphaComponent(0.3), dataPoints: dataPoints)
+        let line = RSLine(lineColor: lineColor, fillColor: lineColor.colorWithAlphaComponent(0.3), dataPoints: dataPoints)
         lineChart.setLines([line])
         
         return lineChart;
     }
     
-    private func chart4() -> FSLineChart {
-        let chart = FSLineChart(frame: CGRect(x: 45, y: 460, width: UIScreen.mainScreen().bounds.size.width - 65, height: 200))
+    private func chart4() -> RSLineChart {
+        let chart = RSLineChart(frame: CGRect(x: 45, y: 460, width: UIScreen.mainScreen().bounds.size.width - 65, height: 200))
         chart.verticalGridStep = 3
         chart.horizontalGridStep = 4
         chart.bezierSmoothing = false
@@ -118,13 +118,13 @@ class ViewController : UIViewController {
         line1Data.append(CGPoint(x: 1, y: 4.6))
         line1Data.append(CGPoint(x: 2, y: 1.8))
         line1Data.append(CGPoint(x: 3, y: 2.8))
-        let line1 = FSLine(lineColor: UIColor.orangeColor(), fillColor: nil, dataPoints: line1Data)
+        let line1 = RSLine(lineColor: UIColor.orangeColor(), fillColor: nil, dataPoints: line1Data)
         
         var line2Data: [CGPoint] = []
         line2Data.append(CGPoint(x: 0, y: 4.3))
         line2Data.append(CGPoint(x: 1, y: 2.6))
         line2Data.append(CGPoint(x: 3, y: 4.6))
-        let line2 = FSLine(lineColor: UIColor.blueColor(), fillColor: nil, dataPoints: line2Data)
+        let line2 = RSLine(lineColor: UIColor.blueColor(), fillColor: nil, dataPoints: line2Data)
 
         chart.setLines([line1, line2])
         

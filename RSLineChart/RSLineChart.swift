@@ -14,7 +14,7 @@ enum ValueLabelPositionType {
     case Left, Right
 }
 
-class FSLineChart: UIView {
+class RSLineChart: UIView {
     
     var verticalGridStep: Int!
     var horizontalGridStep: Int!
@@ -48,7 +48,7 @@ class FSLineChart: UIView {
     var initialPath: CGMutablePathRef?
     var newPath: CGMutablePathRef!
     
-    var lines: [FSLine]!
+    var lines: [RSLine]!
     
     override init() {
         super.init()
@@ -93,7 +93,7 @@ class FSLineChart: UIView {
         super.init(coder: aDecoder)
     }
     
-    func setLines(lines: [FSLine]) {
+    func setLines(lines: [RSLine]) {
         self.lines = lines
         
         computeBounds()
@@ -415,7 +415,7 @@ class FSLineChart: UIView {
         }
     }
     
-    private func getLinePath(line: FSLine, scale: CGFloat, smoothed: Bool, closed: Bool) -> UIBezierPath {
+    private func getLinePath(line: RSLine, scale: CGFloat, smoothed: Bool, closed: Bool) -> UIBezierPath {
         let path = UIBezierPath()
         
         if(smoothed) {
